@@ -33,28 +33,14 @@
 			$this-><?php echo $currentModelName; ?>->create();
 			if ($this-><?php echo $currentModelName; ?>->save($this->request->data)) {
 <?php if ($wannaUseSession): ?>
-				$this->Session->setFlash(
-					__('The %s has been saved', __('<?php echo strtolower($singularHumanName); ?>')),
-					'alert',
-					array(
-						'plugin' => 'TwitterBootstrap',
-						'class' => 'alert-success'
-					)
-				);
+				$this->flashAlert(__('The %s has been saved', __('<?php echo strtolower($singularHumanName); ?>')));
 				$this->redirect(array('action' => 'index'));
 <?php else: ?>
 				$this->flash(__('%s saved.', __('<?php echo ucfirst(strtolower($currentModelName)); ?>')), array('action' => 'index'));
 <?php endif; ?>
 			} else {
 <?php if ($wannaUseSession): ?>
-				$this->Session->setFlash(
-					__('The %s could not be saved. Please, try again.', __('<?php echo strtolower($singularHumanName); ?>')),
-					'alert',
-					array(
-						'plugin' => 'TwitterBootstrap',
-						'class' => 'alert-error'
-					)
-				);
+				$this->flashAlert(__('The %s could not be saved. Please, try again.', __('<?php echo strtolower($singularHumanName); ?>')), 'error');
 <?php endif; ?>
 			}
 		}
@@ -90,28 +76,14 @@
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this-><?php echo $currentModelName; ?>->save($this->request->data)) {
 <?php if ($wannaUseSession): ?>
-				$this->Session->setFlash(
-					__('The %s has been saved', __('<?php echo strtolower($singularHumanName); ?>')),
-					'alert',
-					array(
-						'plugin' => 'TwitterBootstrap',
-						'class' => 'alert-success'
-					)
-				);
+				$this->flashAlert(__('The %s has been saved', __('<?php echo strtolower($singularHumanName); ?>')));
 				$this->redirect(array('action' => 'index'));
 <?php else: ?>
 				$this->flash(__('The %s has been saved.', __('<?php echo strtolower($singularHumanName); ?>')), array('action' => 'index'));
 <?php endif; ?>
 			} else {
 <?php if ($wannaUseSession): ?>
-				$this->Session->setFlash(
-					__('The %s could not be saved. Please, try again.', __('<?php echo strtolower($singularHumanName); ?>')),
-					'alert',
-					array(
-						'plugin' => 'TwitterBootstrap',
-						'class' => 'alert-error'
-					)
-				);
+				$this->flashAlert(__('The %s could not be saved. Please, try again.', __('<?php echo strtolower($singularHumanName); ?>')), 'error');
 <?php endif; ?>
 			}
 		} else {
@@ -150,28 +122,14 @@
 		}
 		if ($this-><?php echo $currentModelName; ?>->delete()) {
 <?php if ($wannaUseSession): ?>
-			$this->Session->setFlash(
-				__('The %s deleted', __('<?php echo strtolower($singularHumanName); ?>')),
-				'alert',
-				array(
-					'plugin' => 'TwitterBootstrap',
-					'class' => 'alert-success'
-				)
-			);
+			$this->flashAlert(__('The %s deleted', __('<?php echo strtolower($singularHumanName); ?>')));
 			$this->redirect(array('action' => 'index'));
 <?php else: ?>
 			$this->flash(__('%s deleted', __('<?php echo ucfirst(strtolower($singularHumanName)); ?>')), array('action' => 'index'));
 <?php endif; ?>
 		}
 <?php if ($wannaUseSession): ?>
-		$this->Session->setFlash(
-			__('The %s was not deleted', __('<?php echo strtolower($singularHumanName); ?>')),
-			'alert',
-			array(
-				'plugin' => 'TwitterBootstrap',
-				'class' => 'alert-error'
-			)
-		);
+		$this->flashAlert(__('The %s was not deleted', __('<?php echo strtolower($singularHumanName); ?>')), 'error');
 <?php else: ?>
 		$this->flash(__('%s was not deleted', __('<?php echo ucfirst(strtolower($singularHumanName)); ?>')), array('action' => 'index'));
 <?php endif; ?>
